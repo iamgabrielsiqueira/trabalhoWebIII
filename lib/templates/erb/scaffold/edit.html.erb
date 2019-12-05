@@ -1,0 +1,19 @@
+<%% content_for :title do %>
+  Editando <%= human_name %>
+<%% end %>
+
+<div class="page-header">
+  <h1>Editando <%= human_name %></h1>
+  <div>
+    <%%= link_to @<%= singular_table_name %>, class: 'btn btn-info' do %>
+      <%%= icon 'fas', 'eye' %>
+      Ver
+    <%% end %>
+    <%%= link_to <%= index_helper %>_path, class: 'btn btn-outline-secondary' do %>
+      <%%= icon 'fas', 'bars' %>
+      Voltar
+    <%% end %>
+  </div>
+</div>
+
+<%%= render 'form' %>

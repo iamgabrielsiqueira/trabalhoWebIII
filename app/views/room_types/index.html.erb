@@ -1,0 +1,43 @@
+<% content_for :title do %>
+  Room types
+<% end %>
+
+<div class="page-header">
+  <h1>Room types</h1>
+  <%= link_to new_room_type_path, class: 'btn btn-primary' do %>
+    <%= icon 'fas', 'plus' %>
+    Add Room type
+  <% end %>
+</div>
+
+<div class="table-responsive">
+  <table class="table table-striped table-bordered table-hover">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @room_types.each do |room_type| %>
+        <tr>
+          <td><%= room_type.name %></td>
+          <td>R$ <%= room_type.price %></td>
+          <td>
+            <%= link_to room_type, class: 'btn btn-info btn-sm' do %>
+              <%= icon 'fas', 'eye', class: 'fa-fw' %>
+            <% end %>
+            <%= link_to edit_room_type_path(room_type), class: 'btn btn-success btn-sm' do %>
+              <%= icon 'fas', 'edit', class: 'fa-fw' %>
+            <% end %>
+            <%= link_to room_type, method: :delete, data: { confirm: 'Você tem certeza?' }, class: 'btn btn-danger btn-sm' do %>
+              <%= icon 'fas', 'times', class: 'fa-fw' %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

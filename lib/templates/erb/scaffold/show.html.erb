@@ -1,0 +1,25 @@
+<%% content_for :title do %>
+  Detalhes de <%= human_name %>
+<%% end %>
+
+<div class="page-header">
+  <h1>Detalhes de <%= human_name %></h1>
+  <div>
+    <%%= link_to edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), class: 'btn btn-success' do %>
+      <%%= icon 'fas', 'edit' %>
+      Editar
+    <%% end %>
+    <%%= link_to <%= index_helper %>_path, class: 'btn btn-outline-secondary' do %>
+      <%%= icon 'fas', 'bars' %>
+      Voltar
+    <%% end %>
+  </div>
+</div>
+
+<dl class="dl-horizontal">
+  <%- attributes.each do |attribute| -%>
+  <dt><%= attribute.human_name %>:</dt>
+  <dd><%%= @<%= singular_table_name %>.<%= attribute.name %> %></dd>
+
+  <%- end -%>
+</dl>

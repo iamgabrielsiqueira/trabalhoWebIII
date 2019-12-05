@@ -1,0 +1,26 @@
+<% content_for :title do %>
+  City Details
+<% end %>
+
+<div class="page-header">
+  <h1>City Details</h1>
+  <div>
+    <%= link_to edit_city_path(@city), class: 'btn btn-success' do %>
+      <%= icon 'fas', 'edit' %>
+      Edit
+    <% end %>
+    <%= link_to cities_path, class: 'btn btn-outline-secondary' do %>
+      <%= icon 'fas', 'bars' %>
+      Back
+    <% end %>
+  </div>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd><%= @city.name %></dd>
+
+  <dt>State:</dt>
+  <dd><%= @city.state.name %></dd>
+
+</dl>

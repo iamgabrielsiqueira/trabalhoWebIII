@@ -1,0 +1,26 @@
+<% content_for :title do %>
+  Room Details
+<% end %>
+
+<div class="page-header">
+  <h1>Room Details</h1>
+  <div>
+    <%= link_to edit_room_path(@room), class: 'btn btn-success' do %>
+      <%= icon 'fas', 'edit' %>
+      Edit
+    <% end %>
+    <%= link_to rooms_path, class: 'btn btn-outline-secondary' do %>
+      <%= icon 'fas', 'bars' %>
+      Back
+    <% end %>
+  </div>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Number:</dt>
+  <dd><%= @room.number %></dd>
+
+  <dt>Room type:</dt>
+  <dd><%= @room.room_type.name %></dd>
+
+</dl>

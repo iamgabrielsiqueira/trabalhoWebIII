@@ -1,0 +1,19 @@
+<% content_for :title do %>
+  Reservation Editing
+<% end %>
+
+<div class="page-header">
+  <h1>Reservation Editing</h1>
+  <div>
+    <%= link_to @reservation, class: 'btn btn-info' do %>
+      <%= icon 'fas', 'eye' %>
+      Show
+    <% end %>
+    <%= link_to reservations_path, class: 'btn btn-outline-secondary' do %>
+      <%= icon 'fas', 'bars' %>
+      Back
+    <% end %>
+  </div>
+</div>
+
+<%= render 'form' %>

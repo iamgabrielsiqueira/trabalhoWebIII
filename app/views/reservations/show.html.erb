@@ -1,0 +1,38 @@
+<% content_for :title do %>
+  Reservation Details
+<% end %>
+
+<div class="page-header">
+  <h1>Reservation Details</h1>
+  <div>
+    <%= link_to edit_reservation_path(@reservation), class: 'btn btn-success' do %>
+      <%= icon 'fas', 'edit' %>
+      Edit
+    <% end %>
+    <%= link_to reservations_path, class: 'btn btn-outline-secondary' do %>
+      <%= icon 'fas', 'bars' %>
+      Back
+    <% end %>
+  </div>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Start date:</dt>
+  <dd><%= @reservation.start_date %></dd>
+
+  <dt>End date:</dt>
+  <dd><%= @reservation.end_date %></dd>
+
+  <dt>Price:</dt>
+  <dd><%= @reservation.price %></dd>
+
+  <dt>Room:</dt>
+  <dd><%= @reservation.room.number %></dd>
+
+  <dt>Price:</dt>
+  <dd><%= @reservation.price %></dd>
+
+  <dt>Guest:</dt>
+  <dd><%= @reservation.user %></dd>
+
+</dl>

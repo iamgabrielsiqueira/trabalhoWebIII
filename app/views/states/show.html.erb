@@ -1,0 +1,23 @@
+<% content_for :title do %>
+  State Details
+<% end %>
+
+<div class="page-header">
+  <h1>State Details</h1>
+  <div>
+    <%= link_to edit_state_path(@state), class: 'btn btn-success' do %>
+      <%= icon 'fas', 'edit' %>
+      Edit
+    <% end %>
+    <%= link_to states_path, class: 'btn btn-outline-secondary' do %>
+      <%= icon 'fas', 'bars' %>
+      Back
+    <% end %>
+  </div>
+</div>
+
+<dl class="dl-horizontal">
+  <dt>Name:</dt>
+  <dd><%= @state.name %></dd>
+
+</dl>

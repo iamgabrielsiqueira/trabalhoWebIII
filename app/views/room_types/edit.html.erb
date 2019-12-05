@@ -1,0 +1,19 @@
+<% content_for :title do %>
+  Room Type Editing
+<% end %>
+
+<div class="page-header">
+  <h1>Room Type Editing</h1>
+  <div>
+    <%= link_to @room_type, class: 'btn btn-info' do %>
+      <%= icon 'fas', 'eye' %>
+      Show
+    <% end %>
+    <%= link_to room_types_path, class: 'btn btn-outline-secondary' do %>
+      <%= icon 'fas', 'bars' %>
+      Back
+    <% end %>
+  </div>
+</div>
+
+<%= render 'form' %>

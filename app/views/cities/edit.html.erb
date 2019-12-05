@@ -1,0 +1,19 @@
+<% content_for :title do %>
+  City Editing
+<% end %>
+
+<div class="page-header">
+  <h1>City Editing</h1>
+  <div>
+    <%= link_to @city, class: 'btn btn-info' do %>
+      <%= icon 'fas', 'eye' %>
+      Show
+    <% end %>
+    <%= link_to cities_path, class: 'btn btn-outline-secondary' do %>
+      <%= icon 'fas', 'bars' %>
+      Back
+    <% end %>
+  </div>
+</div>
+
+<%= render 'form' %>

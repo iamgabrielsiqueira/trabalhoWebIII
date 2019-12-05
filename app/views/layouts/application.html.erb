@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= content_for?(:title) ? yield(:title) + ' | ' : '' %>Hotel</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
+    <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.2/html5shiv.min.js" type="text/javascript"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <%= link_to 'Hotel', root_path, class: 'navbar-brand' %>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+
+          <% if current_user && current_user.admin? %>
+            <li class="nav-item">
+              <%= link_to 'Room Types', room_types_path, class: 'nav-link' %>
+            </li> 
+            <li class="nav-item">
+              <%= link_to 'Rooms', rooms_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'States', states_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+              <%= link_to 'Cities', cities_path, class: 'nav-link' %>
+            </li>
+          <% end %>
+
+          <% if current_user %>
+            <% if current_user.admin? %>
+              <li class="nav-item">
+                <%= link_to 'Reservations', reservations_path, class: 'nav-link' %>
+              </li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to 'My Reservations', my_reservations_path, class: 'nav-link' %>
+              </li>
+            <% end %>
+          <% end %>
+
+          </ul>
+          <ul class="navbar-nav my-2 my-lg-0">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <%= user_signed_in? ? current_user.email : 'Visitor' %>
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <% if user_signed_in? %>
+                  <%= link_to 'Logout', destroy_user_session_path, method: :delete, class: 'dropdown-item' %>
+                <% else %>
+                  <%= link_to 'Login', new_user_session_path, class: 'dropdown-item' %>
+                  <%= link_to 'Register', new_user_registration_path, class: 'dropdown-item' %>
+                <% end %>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <% if notice %>
+        <div class="alert alert-success"><%= notice %></div>
+      <% end %>
+      <% if alert %>
+        <div class="alert alert-danger"><%= alert %></div>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
+</html>
